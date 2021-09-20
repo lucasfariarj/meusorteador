@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    input {
+        padding: 5px;
+        display: block;
+        margin: 10px 0;
+        
+    }
+
+    label {
+        font-size: 18px;
+    }
+
+    h1 {
+        padding: 10px;
+        margin: 5px;
+        color: red;
+    }
+
+    button {
+        font-size: 20px;
+        padding: 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <h1>Sorteador</h1>
+    <form action="">
+        <label for="nome">Nome do Aluno:</label>
+        <input type="text" id="nome">
+        <label for="numero">Sortear número até:</label>
+        <input type="text" id="numero" required>
+        <button type="submit" id="send">Sortear</button>
+    </form>
+    
+    <h1 id="textAluno"></h1>
+    <h1 id="textNumero"></h1>
+</body>
+
+<script>
+    const valor = document.querySelector('#numero');
+    const nome = document.querySelector('#nome');
+    const textAluno = document.querySelector('#textAluno')
+    const btn = document.querySelector('#send');
+    const textNumero = document.querySelector('#textNumero')
+    
+
+    btn.addEventListener('click',(event)=> {
+        event.preventDefault();
+        const numero = valor.value;
+        if(!isNaN(numero) && numero != ''){
+            const aleatorio = Math.random() * numero;
+            textAluno.innerText = nome.value;
+            textNumero.innerText = aleatorio.toFixed(0);
+        }else{
+            textAluno.innerText = ''
+            textNumero.innerText = 'Insira apenas Números!'
+        }  
+    });
+</script>
+</html>
